@@ -5,7 +5,6 @@ parameters:
   default: false
 
 pr:
-  autoCancel: boolean # Whether to cancel running PR builds when a new commit lands in the branch. Default: true.  (false,n,no,off,on,true,y,yes)
   branches:  # Branch names to include or exclude for triggering a run.
     include: [ main ] # List of items to include. 
   paths:  # File paths to include or exclude for triggering a run.
