@@ -1,0 +1,12 @@
+name: validation-workflow-one
+# Run this workflow every time a commit gets pushed to main or a pull request gets opened against main
+on:
+  pull_request:
+    paths-ignore:
+      - 'one/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: 'echo "No build required"'
