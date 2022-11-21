@@ -1,4 +1,4 @@
-name: validation-workflow
+name: validation-workflow-one
 
 # Run this workflow every time a commit gets pushed to main or a pull request gets opened against main
 on:
@@ -8,6 +8,8 @@ on:
   pull_request:
     branches: 
       - main
+    paths:
+      - one
 
 jobs:
     build:
