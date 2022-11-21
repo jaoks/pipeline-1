@@ -1,4 +1,4 @@
-name: CI
+name: validation-workflow-one
 
 # Run this workflow every time a commit gets pushed to main or a pull request gets opened against main
 on:
@@ -8,6 +8,8 @@ on:
   pull_request:
     branches: 
       - main
+    paths:
+      - one
 
 jobs:
     build:
@@ -17,6 +19,6 @@ jobs:
         - name: Azure Pipelines Action
           uses: Azure/pipelines@v1
           with:
-            azure-devops-project-url: https://dev.azure.com/organization/project-name
-            azure-pipeline-name: 'My Pipeline'
+            azure-devops-project-url: 'https://dev.azure.com/joakimstrandberg95/joakimstrandberg95'
+            azure-pipeline-name: 'one'
             azure-devops-token: ${{ secrets.AZURE_DEVOPS_TOKEN }}
