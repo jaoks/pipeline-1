@@ -1,0 +1,23 @@
+name: validation-workflow-two
+# Run this workflow every time a commit gets pushed to main or a pull request gets opened against main
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches: 
+      - main
+    paths:
+      - two/*
+
+jobs:
+    build:
+        name: Call Azure Pipeline two
+        runs-on: ubuntu-latest
+        steps:
+        - name: Azure Pipelines Action
+          uses: Azure/pipelines@v1
+          with:
+            azure-devops-project-url: 'https://dev.azure.com/joakimstrandberg95/joakimstrandberg95'
+            azure-pipeline-name: 'one'
+            azure-devops-token: ${{ secrets.AZURE_DEVOPS_TOKEN }}
