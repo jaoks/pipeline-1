@@ -18,6 +18,6 @@ jobs:
         - name: Azure Pipelines Action
           uses: Azure/pipelines@v1
           with:
-            azure-devops-project-url: https://dev.azure.com/joakimstrandberg95/joakimstrandberg95
+            azure-devops-project-url: 'https://dev.azure.com/joakimstrandberg95/joakimstrandberg95'
             azure-pipeline-name: 'one'
             azure-devops-token: ${{ secrets.AZURE_DEVOPS_TOKEN }}
