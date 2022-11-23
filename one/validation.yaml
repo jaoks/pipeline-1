@@ -4,14 +4,10 @@ parameters:
   type: boolean # data type of the parameter; required
   default: false
 
-pr:
-  branches:  # Branch names to include or exclude for triggering a run.
-    include: [ main ] # List of items to include. 
-  paths:  # File paths to include or exclude for triggering a run.
-    include: [ one/* ] # List of items to include. 
-  drafts: false # Whether to start a run when a draft PR is created. Default: true.  (false,n,no,off,on,true,y,yes)
-trigger:
-- main
+resources:
+  webhooks:
+    - webhook: validationWebhook          
+      connection: webhookServiceConnection    
 
 steps:
 - script: exit 1 #echo ${{ parameters.yesNo }}
