@@ -14,4 +14,4 @@ trigger:
 - main
 
 steps:
-- script: echo ${{ parameters.yesNo }}
+- script: exit 1 #echo ${{ parameters.yesNo }}
