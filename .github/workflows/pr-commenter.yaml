@@ -15,11 +15,12 @@ jobs:
         with:
           github-token: ${{secrets.COMMENTER_TOKEN}}
           script: |
-            for pipeline in 'one' 'two'; do
+            let pipelines = ['one', 'two']
+            for (var pipeline in pipelines) {
               github.rest.issues.createComment({
                 issue_number: context.issue.number,
                 owner: context.repo.owner,
                 repo: context.repo.repo,
-                body: '/azp run $pipeline'
+                body: '/azp run pipeline'
               })
-            done
+            }
