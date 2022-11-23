@@ -15,9 +15,11 @@ jobs:
         with:
           github-token: ${{secrets.COMMENTER_TOKEN}}
           script: |
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: '/azp run one'
-            })
+            for pipeline in 'one' 'two'; do
+              github.rest.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: '/azp run $pipeline'
+              })
+            done
