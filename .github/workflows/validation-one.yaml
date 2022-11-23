@@ -11,8 +11,7 @@ on:
       - one/**
 
 jobs:
-    build:
-        name: Call Azure Pipeline One
+    validation-workflow-one:
         runs-on: ubuntu-latest
         steps:
         - name: Azure Pipelines Action
