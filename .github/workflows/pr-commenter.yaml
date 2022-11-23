@@ -1,3 +1,5 @@
+name: pr-commenter.yaml
+
 on:
   # Trigger the workflow on push or pull request
   pull_request:
