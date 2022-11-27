@@ -7,7 +7,7 @@ parameters:
 resources:
   webhooks:
     - webhook: validationWebhook          
-      connection: webhookServiceConnection    
+      connection: validationServiceConnection    
 
 steps:
 - script: echo ${{ parameters.yesNo }}

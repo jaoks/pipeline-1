@@ -11,7 +11,7 @@ on:
       - two/hej.yaml
 
 jobs:
-    build:
+    validation-workflow-two:
         runs-on: ubuntu-latest
         steps:
         - name: Azure Pipelines Action

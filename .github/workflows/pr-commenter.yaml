@@ -1,0 +1,18 @@
+name: pr-commenter.yaml
+
+on:
+  # Trigger the workflow on push or pull request
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  comment:
+    if: github.repository == 'joakimstrandberg/pipeline'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v5
+        with:
+          github-token: ${{secrets.COMMENTER_TOKEN}}
+          script: |
+            let pipelines = ['one', 'two']
