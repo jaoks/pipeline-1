@@ -12,6 +12,7 @@ on:
 
 jobs:
     validation-workflow-two:
+        if: github.repository == 'hej/hej'
         runs-on: ubuntu-latest
         steps:
         - name: Azure Pipelines Action
