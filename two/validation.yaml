@@ -22,4 +22,4 @@ resources:
         value: two/validation.yaml  ### Expected value in the path provided
 
 steps:
-- script: echo ${{ parameters.validationWebhook }}
+- script: echo ${{ convertToJson(parameters.validationWebhook) }}
