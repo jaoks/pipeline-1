@@ -19,7 +19,7 @@ resources:
       connection: validationServiceConnection
       filters:
       - path: commits[0].modified[0]      ### JSON path in the payload
-        value: two/validation.yaml  ### Expected value in the path provided
+        value: two/validation.yaml  ### Expected value in the path provideds
 
 steps:
 - script: echo ${{ convertToJson(parameters.validationWebhook) }}
