@@ -6,12 +6,12 @@ parameters:
 trigger: none
     
 pr: none
-#  branches:
-#    include:
-#    - main
-#  paths:
-#    include:
-#    - two/**
+  branches:
+    include:
+    - main
+  paths:
+    include:
+    - one/**
 
 resources:
   webhooks:
