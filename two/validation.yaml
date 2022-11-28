@@ -4,13 +4,7 @@ parameters:
   type: boolean # data type of the parameter; required
   default: false
 
-trigger:
-  branches:
-    include:
-    - main
-  paths:
-    include:
-    - one/**
+trigger: none
     
 pr:
   branches:
