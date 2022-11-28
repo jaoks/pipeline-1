@@ -17,9 +17,9 @@ resources:
   webhooks:
     - webhook: validationWebhook          
       connection: validationServiceConnection
-      filters:
-      - path:  "ref" #commits[0].modified[0]      ### JSON path in the payload
-        value: "refs/heads/main" ##one/validation.yaml   ### Expected value in the path provided
+#      filters:
+##      - path:  "ref" #commits[0].modified[0]      ### JSON path in the payload
+#        value: "refs/heads/main" ##one/validation.yaml   ### Expected value in the path provided
 
 steps:
 - script: echo ${{ parameters.validationWebhook }}
