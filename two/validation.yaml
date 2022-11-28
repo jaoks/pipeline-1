@@ -16,7 +16,10 @@ pr:
 resources:
   webhooks:
     - webhook: validationWebhook          
-      connection: validationServiceConnection   
+      connection: validationServiceConnection
+      filters:
+      - path: commits[0].modified[0]      ### JSON path in the payload
+        value: two/*   ### Expected value in the path provided
 
 steps:
 - script: echo ${{ parameters.yesNo }}
