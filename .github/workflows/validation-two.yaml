@@ -8,7 +8,7 @@ on:
     branches: 
       - main
     paths:
-      - two/hej.yaml
+      - two/**
 
 jobs:
     validation-workflow-two:

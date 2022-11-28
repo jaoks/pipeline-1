@@ -4,5 +4,26 @@ parameters:
   type: boolean # data type of the parameter; required
   default: false
 
+trigger:
+  branches:
+    include:
+    - main
+  paths:
+    include:
+    - one/**
+    
+pr:
+  branches:
+    include:
+    - main
+  paths:
+    include:
+    - one/**
+
+resources:
+  webhooks:
+    - webhook: validationWebhook          
+      connection: validationServiceConnection   
+
 steps:
 - script: echo ${{ parameters.yesNo }}
