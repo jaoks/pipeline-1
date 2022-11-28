@@ -3,26 +3,23 @@ parameters:
   type: boolean # data type of the parameter; required
   default: false
 
-trigger:
-  branches:
-    include:
-    - main
-  paths:
-    include:
-    - one/**
+trigger: none
     
-pr:
-  branches:
-    include:
-    - main
-  paths:
-    include:
-    - one/**
+pr: none
+#  branches:
+#    include:
+#    - main
+#  paths:
+#    include:
+#    - two/**
 
 resources:
   webhooks:
     - webhook: validationWebhook          
-      connection: validationServiceConnection    
+      connection: validationServiceConnection
+      filters:
+      - path: commits[0].modified[0]      ### JSON path in the payload
+        value: one/*   ### Expected value in the path provided
 
 steps:
 - script: echo ${{ parameters.yesNo }}
