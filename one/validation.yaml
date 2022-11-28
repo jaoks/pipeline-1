@@ -19,7 +19,7 @@ resources:
       connection: validationServiceConnection
       filters:
       - path: commits[0].modified[0]      ### JSON path in the payload
-        value: one/test.txt   ### Expected value in the path provided
+        value: one/*   ### Expected value in the path provided
 
 steps:
 - script: echo ${{ parameters.yesNo }}
