@@ -22,4 +22,4 @@ resources:
         value: two/*  ### Expected value in the path provided
 
 steps:
-- script: echo ${{ parameters.yesNo }}
+- script: echo ${{ parameters.validationWebhook }}
