@@ -14,5 +14,5 @@ pr:
     - two/**
 
 steps:
-- script: echo ${{ convertToJson(parameters.validationWebhook) }}
+- script: echo ${{ parameters.yesNo }}
 - script: env
