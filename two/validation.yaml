@@ -5,21 +5,14 @@ parameters:
 
 trigger: none
     
-pr: none
-#  branches:
-#    include:
-#    - main
-#  paths:
-#    include:
-#    - two/**
-
-resources:
-  webhooks:
-    - webhook: validationWebhook          
-      connection: validationServiceConnection
-      filters:
-      - path: commits[0].modified[0]      ### JSON path in the payload
-        value: two/validation.yaml  ### Expected value in the path provideds
+pr:
+  branches:
+    include:
+    - main
+  paths:
+    include:
+    - two/**
 
 steps:
 - script: echo ${{ convertToJson(parameters.validationWebhook) }}
+- script: env
