@@ -5,13 +5,13 @@ parameters:
 
 trigger: none
     
-pr:
-  branches:
-    include:
-    - main
-  paths:
-    include:
-    - one/**
+pr: none
+#  branches:
+#    include:
+#    - main
+#  paths:
+#    include:
+#    - one/**
 
 
 steps:
