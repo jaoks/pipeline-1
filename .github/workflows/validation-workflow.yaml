@@ -4,8 +4,8 @@ on:
   workflow_run:
     workflows: ["pr-commenter"]
     types: [completed]
-    branches:
-      - 'main'
+#    branches:
+#      - 'main'
 jobs:
     validation-workflow:
         strategy:
