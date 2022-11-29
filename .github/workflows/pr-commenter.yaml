@@ -1,4 +1,4 @@
-name: pr-commenter.yaml
+name: pr-commenter
 
 on:
   # Trigger the workflow on push or pull requests
