@@ -3,7 +3,7 @@ name: validation-workflow
 on:
   workflow_run:
     workflows: ["pr-commenter"]
-    types: [completed]
+    types: [requested]
 #    branches:
 #      - 'main'
 jobs:
