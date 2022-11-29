@@ -1,23 +1,23 @@
-name: validation-workflow-two
+name: validation-workflow
 # Run this workflow every time a commit gets pushed to main or a pull request gets opened against main
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches: 
-      - main
-    paths:
-      - two/**
-
+  workflow_run:
+    workflows: [pr-commenter]
+    types: [completed]
+#    branches:
+#      - 'main'
 jobs:
-    validation-workflow-two:
-        if: github.repository == 'hej/hej'
+    validation-workflow:
+        if: ${{ github.event.workflow_run.conclusion == 'success' }}
+        strategy:
+          matrix:
+            pipeline: [one, two]
+        #if: github.repository == 'hej/hej'
         runs-on: ubuntu-latest
         steps:
         - name: Azure Pipelines Action
           uses: Azure/pipelines@v1
           with:
             azure-devops-project-url: 'https://dev.azure.com/joakimstrandberg95/joakimstrandberg95'
-            azure-pipeline-name: 'two'
+            azure-pipeline-name: ${{ matrix.pipeline }}
             azure-devops-token: ${{ secrets.AZURE_DEVOPS_TOKEN }}

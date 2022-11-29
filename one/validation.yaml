@@ -13,13 +13,7 @@ pr: none
 #    include:
 #    - one/**
 
-resources:
-  webhooks:
-  - webhook: validationWebhook          
-    connection: validationServiceConnection
-    filters:
-    - path:  commits[0].modified[0]      ### JSON path in the payload
-      value: one/*   ### Expected value in the path provided
 
 steps:
 - script: echo ${{ parameters.yesNo }}
+- script: env
