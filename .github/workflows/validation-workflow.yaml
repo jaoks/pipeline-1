@@ -1,4 +1,4 @@
-name: validation-workflow-one
+name: validation-workflow
 # Run this workflow every time a commit gets pushed to main or a pull request gets opened against main
 on:
   push:
@@ -11,7 +11,7 @@ on:
       - one/**
 
 jobs:
-    validation-workflow-one:
+    validation-workflow:
         strategy:
           matrix:
             pipeline: [one, two]
