@@ -1,7 +1,6 @@
 name: pr-commenter
 
 on:
-  # Trigger the workflow on push or pull requests
   pull_request:
     branches:
       - main
