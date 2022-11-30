@@ -8,7 +8,7 @@ on:
       
 jobs:
   validation-workflow:
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    if: ${{ github.event.workflow_run.conclusion == 'success1' }}
     strategy:
       matrix:
         pipeline: [one, two]
