@@ -4,10 +4,10 @@ on:
   pull_request:
     branches:
       - main
-
+      
 jobs:
   comment:
-    if: github.repository == 'joakimstrandberg/pipeline'
+    #if: github.repository == 'joakimstrandberg/pipeline'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/github-script@v5
@@ -15,3 +15,20 @@ jobs:
           github-token: ${{secrets.COMMENTER_TOKEN}}
           script: |
             let pipelines = ['one', 'two']
+            
+  validation-workflow:
+    #if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    needs: comment
+    strategy:
+      matrix:
+        pipeline: [one, two]
+    runs-on: ubuntu-latest
+    steps:
+    - name: Azure Pipelines Action
+      uses: Azure/pipelines@v1
+      with:
+        azure-devops-project-url: 'https://dev.azure.com/joakimstrandberg95/joakimstrandberg95'
+        azure-pipeline-name: ${{ matrix.pipeline }}
+        azure-devops-token: ${{ secrets.AZURE_DEVOPS_TOKEN }}
+
+
