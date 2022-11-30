@@ -1,5 +1,5 @@
 parameters:
-- name: yesNo # name of the parameter; required
+- name: yesNo # name of the parameter; requiredz
   type: boolean # data type of the parameter; required
   default: false
 
