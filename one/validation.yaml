@@ -6,12 +6,12 @@ parameters:
 trigger: none
     
 pr: none
-#  branches:
-#    include:
-#    - main
-#  paths:
-#    include:
-#    - one/**
+  branches:
+    include:
+    - main
+  paths:
+    include:
+    - one/**
 
 
 steps:
