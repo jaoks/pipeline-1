@@ -5,13 +5,13 @@ parameters:
 
 trigger: none
     
-pr: none
-#  branches:
-#    include:
-#    - main
-#  paths:
-#    include:
-#    - two/**
+pr:
+  branches:
+    include:
+    - main
+  paths:
+    include:
+    - two/**
 
 steps:
 - script: echo ${{ parameters.yesNo }}
