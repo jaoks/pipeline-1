@@ -5,7 +5,7 @@ parameters:
 
 trigger: none
     
-pr: none
+pr: #none
   branches:
     include:
     - main
