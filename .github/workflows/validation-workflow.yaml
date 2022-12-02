@@ -1,17 +1,20 @@
 name: validation-workflow
 
 on:
-  workflow_run:
-    workflows: [pr-validation-trigger]
-    types:
-      - completed
+  pull_request:
+    branches:
+      - main
+#  workflow_run:
+#    workflows: [pr-validation-trigger]
+#    types:
+#      - completed
       
 jobs:
   validation-workflow:
-    if: ${{ github.event.workflow_run.conclusion == 'success1' }}
-    strategy:
-      matrix:
-        pipeline: [one, two]
+    #if: ${{ github.event.workflow_run.conclusion == 'success1' }}
+    #strategy:
+    #  matrix:
+    #    pipeline: [one, two]
     #if: github.repository == 'hej/hej'
     runs-on: ubuntu-latest
     steps:
@@ -19,5 +22,5 @@ jobs:
       uses: Azure/pipelines@v1
       with:
         azure-devops-project-url: 'https://dev.azure.com/joakimstrandberg95/joakimstrandberg95'
-        azure-pipeline-name: ${{ matrix.pipeline }}
+        azure-pipeline-name: 'one'
         azure-devops-token: ${{ secrets.AZURE_DEVOPS_TOKEN }}
