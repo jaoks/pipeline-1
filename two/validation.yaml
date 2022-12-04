@@ -16,4 +16,4 @@ pr:
 steps:
 - script: echo ${{ parameters.yesNo }}
 - script: env
-- script: exit 1
+- script: exit 1 #will fail

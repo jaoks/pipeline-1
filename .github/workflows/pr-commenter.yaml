@@ -1,7 +1,7 @@
 name: pr-validation-trigger
 
 on:
-  pull_request:
+  pull_request_target:
     branches:
       - main
       
@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/github-script@v5
         with:
-          #github-token: ${{secrets.COMMENTER_TOKEN}}
+          github-token: ${{secrets.COMMENTER_TOKEN}}
           script: |
             let pipelines = ['one', 'two']
             
