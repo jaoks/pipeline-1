@@ -7,20 +7,14 @@ on:
       
 jobs:
   comment:
-    if: github.event.pull_request.draft == false
-#    runs-on: ubuntu-latest
-#    steps:
-#      - uses: actions/github-script@v6
-#        with:
-#          github-token: ${{secrets.COMMENTER_TOKEN}}
-#          script: |
-#            let pipelines = ['one', 'two']
+    if: |
+      github.event.pull_request.draft == false  
     runs-on: ubuntu-latest
     steps:
       - id: pipelinenames
         run: echo "pipelines=one, two" >> $GITHUB_OUTPUT
       - id: debug
-        run: echo ${{ steps.pipelinenames.outputs.pipelines }}
+        run: echo '${{ toJSON(github.event.pull_request) }}''
       - id: azprun
         uses: actions/github-script@v6
         with:
@@ -32,3 +26,5 @@ jobs:
               repo: context.repo.repo,
               body: '/azp run ${{ steps.pipelinenames.outputs.pipelines }}'
             })
+  
+# github.event.pull_request.user.login
