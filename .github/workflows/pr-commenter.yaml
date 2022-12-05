@@ -17,6 +17,8 @@ jobs:
       #    ref: ${{ github.event.pull_request.head.sha }}
       - run: |
           gh pr view ${{ github.event.pull_request.number }} --json files -q '.files[].path'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - id: pipelinenames
         name: Get pipeline names
         run: echo "pipelines=one, two" >> $GITHUB_OUTPUT
