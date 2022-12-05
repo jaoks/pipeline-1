@@ -21,7 +21,7 @@ jobs:
 ##        run: echo "pipelines=one,two" >> $GITHUB_OUTPUT
 #      - id: debug
 #        run: echo ${{ steps.pipeline-names.outputs.pipelines }}
-      - id: Azp run
+      #- id: azp-run
         uses: actions/github-script@v6
         with:
           github-token: ${{secrets.COMMENTER_TOKEN_2}}
