@@ -20,7 +20,7 @@ jobs:
 
           FILTER="*validation.yaml"
           echo "testtest"
-          for f in "${ghtest[@]}"
+          for f in "${changedFiles[@]}"
           do
               echo "$f"
               echo "---"
