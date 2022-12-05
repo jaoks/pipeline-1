@@ -16,10 +16,27 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha }}
       - run: |
-          gh pr view ${{ github.event.pull_request.number }} --json files -q '.files[].path'
+          changedFiles=($(gh pr view ${{ github.event.pull_request.number }} --json files -q '.files[].path'))
+
+          FILTER="*validation.yaml"
+          for f in "${ghtest[@]}"
+          do
+              echo $f
+              echo "---"
+              if [[ $f == $FILTER ]]
+              then
+                  echo "Found change in file ${f}"
+                  echo "pipelineChanged=true" >> $GITHUB_OUTPUT
+                  exit 0
+              fi
+          done
+          echo "pipelineChanged=false" >> $GITHUB_OUTPUT
+        name: Check changed files
+        id: checkchangedfiles
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - id: pipelinenames
+        if: steps.checkchangedfiles.outputs.pipelineChanged == false
         name: Get pipeline names
         run: echo "pipelines=one, two" >> $GITHUB_OUTPUT
       - id: debug
