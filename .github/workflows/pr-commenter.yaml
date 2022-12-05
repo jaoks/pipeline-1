@@ -7,15 +7,26 @@ on:
       
 jobs:
   comment:
-    if: github.repository == 'joakimstrandberg/pipeline'
+#    if: github.repository == 'joakimstrandberg/pipeline'
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/github-script@v5
+#        with:
+#          github-token: ${{secrets.COMMENTER_TOKEN}}
+#          script: |
+#            let pipelines = ['one', 'two']
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/github-script@v5
+      - uses: actions/github-script@v3
         with:
-          github-token: ${{secrets.COMMENTER_TOKEN}}
+          github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            let pipelines = ['one', 'two']
-            
+            github.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '/azp run'
+            })       
 #  validation-workflow:
 #    #if: ${{ github.event.workflow_run.conclusion == 'success' }}
 #    needs: comment
