@@ -19,9 +19,10 @@ jobs:
           changedFiles=($(gh pr view ${{ github.event.pull_request.number }} --json files -q '.files[].path'))
 
           FILTER="*validation.yaml"
+          echo "testtest"
           for f in "${ghtest[@]}"
           do
-              echo $f
+              echo "$f"
               echo "---"
               if [[ $f == $FILTER ]]
               then
