@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - id: pipelinenames
-        run: echo "pipelines=one,two" >> $GITHUB_OUTPUT
+        run: echo "pipelines=one, two" >> $GITHUB_OUTPUT
       - id: debug
         run: echo ${{ steps.pipelinenames.outputs.pipelines }}
       - id: azprun
