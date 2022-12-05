@@ -7,15 +7,20 @@ on:
       
 jobs:
   comment:
+    # Do not trigger if pull request is draft or not a fork
     if: |
-      github.event.pull_request.draft == false  
+      github.event.pull_request.draft == false || github.event.pull_request.head.repo.full_name != 'joakimstrandberg/pipeline'
     runs-on: ubuntu-latest
     steps:
+      - run: |
+          git diff --name-only HEAD
       - id: pipelinenames
+        name: Get pipeline names
         run: echo "pipelines=one, two" >> $GITHUB_OUTPUT
       - id: debug
         run: echo '${{ toJSON(github.event.pull_request) }}'
       - id: azprun
+        name: Trigger pipelines with comment
         uses: actions/github-script@v6
         with:
           github-token: ${{secrets.COMMENTER_TOKEN_2}}
