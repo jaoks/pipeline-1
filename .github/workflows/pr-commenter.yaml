@@ -7,7 +7,7 @@ on:
       
 jobs:
   comment:
-#    if: github.repository == 'joakimstrandberg/pipeline'
+    if: github.repository == 'sjoakimstrandberg/pipeline'
 #    runs-on: ubuntu-latest
 #    steps:
 #      - uses: actions/github-script@v5
