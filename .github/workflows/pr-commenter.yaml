@@ -12,13 +12,16 @@ jobs:
       github.event.pull_request.draft == false || github.event.pull_request.head.repo.full_name != 'joakimstrandberg/pipeline'
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
+      with:
+        ref: ${{ github.event.pull_request.head.sha }}
       - run: |
           git diff --name-only HEAD
       - id: pipelinenames
         name: Get pipeline names
         run: echo "pipelines=one, two" >> $GITHUB_OUTPUT
       - id: debug
-        run: echo '${{ toJSON(github.event.pull_request) }}'
+        run: echo '${{ toJSON(github.event) }}'
       - id: azprun
         name: Trigger pipelines with comment
         uses: actions/github-script@v6
