@@ -27,7 +27,7 @@ jobs:
               then
                   echo "Found change in file ${f}"
                   echo "pipelineChanged=true" >> $GITHUB_OUTPUT
-                  exit 0
+                  exit 1
               fi
           done
           echo "pipelineChanged=false" >> $GITHUB_OUTPUT
@@ -39,9 +39,8 @@ jobs:
         if: steps.checkchangedfiles.outputs.pipelineChanged == false
         name: Get pipeline names
         run: echo "pipelines=one, two" >> $GITHUB_OUTPUT
-      - id: debug
-        run: echo '${{ toJSON(github.event) }}'
       - id: azprun
+        if: steps.checkchangedfiles.outputs.pipelineChanged == false
         name: Trigger pipelines with comment
         uses: actions/github-script@v6
         with:
@@ -53,5 +52,3 @@ jobs:
               repo: context.repo.repo,
               body: '/azp run ${{ steps.pipelinenames.outputs.pipelines }}'
             })
-  
-# github.event.pull_request.user.login
