@@ -20,7 +20,7 @@ jobs:
       - id: pipelinenames
         run: echo "pipelines=one,two" >> $GITHUB_OUTPUT
       - id: debug
-        run: echo ${{ steps.pipeline-names.outputs.pipelines }}
+        run: echo ${{ steps.pipelinenames.outputs.pipelines }}
       - id: azprun
         uses: actions/github-script@v6
         with:
