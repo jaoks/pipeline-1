@@ -18,6 +18,9 @@ jobs:
     #if: github.repository == 'hej/hej'
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v3
+      with:
+        ref: ${{ github.event.pull_request.head.sha }}
     - name: Azure Pipelines Action
       uses: azure/pipelines@v1.2
       with:
