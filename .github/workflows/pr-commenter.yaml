@@ -60,8 +60,9 @@ jobs:
         with:
           github-token: ${{secrets.COMMENTER_TOKEN_2}}
           script: |
-            console.log(await github.rest.repos.getBranch({
+            const result = await github.rest.repos.getBranch({
               owner: context.repo.owner,
               repo: context.repo.repo,
               branch: "main"
-            });)
+            });
+            console.log(result);
