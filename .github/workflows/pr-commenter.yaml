@@ -53,3 +53,16 @@ jobs:
               repo: context.repo.repo,
               body: '/azp run ${{ steps.pipelinenames.outputs.pipelines }}'
             })
+      - id: debug
+        if: ${{ steps.checkchangedfiles.outputs.pipelineChanged }} == false
+        name: Trigger pipelines with comment
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            const stausChecks = await github.rest.repos.getStatusChecksProtection({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              branch: "main"
+            });
+            console.log(statusChecks)
