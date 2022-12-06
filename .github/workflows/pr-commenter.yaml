@@ -65,4 +65,4 @@ jobs:
               repo: context.repo.repo,
               branch: "main"
             });
-            console.log(result);
+            console.log(result.data.protection.required_status_checks);
