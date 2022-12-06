@@ -60,7 +60,7 @@ jobs:
         with:
           github-token: ${{secrets.COMMENTER_TOKEN_2}}
           script: |
-            const stausChecks = await github.rest.repos.getStatusChecksProtection({
+            const stausChecks = await github.rest.repos.getBranch({
               owner: context.repo.owner,
               repo: context.repo.repo,
               branch: "main"
