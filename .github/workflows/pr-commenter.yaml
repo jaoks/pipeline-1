@@ -55,7 +55,7 @@ jobs:
             })
       - id: debug
         if: ${{ steps.checkchangedfiles.outputs.pipelineChanged }} == false
-        name: Trigger pipelines with comment
+        name: Get required status checks
         uses: actions/github-script@v6
         with:
           github-token: ${{secrets.COMMENTER_TOKEN_2}}
@@ -65,4 +65,5 @@ jobs:
               repo: context.repo.repo,
               branch: "main"
             });
-            console.log(result.data.protection.required_status_checks);
+            checks = result.data.protection.required_status_checks.checks
+            
