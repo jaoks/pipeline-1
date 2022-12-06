@@ -58,7 +58,7 @@ jobs:
         name: Trigger pipelines with comment
         uses: actions/github-script@v6
         with:
-          github-token: ${{secrets.GITHUB_TOKEN}}
+          github-token: ${{secrets.COMMENTER_TOKEN_2}}
           script: |
             const stausChecks = await github.rest.repos.getStatusChecksProtection({
               owner: context.repo.owner,
