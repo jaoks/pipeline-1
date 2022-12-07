@@ -17,9 +17,8 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha }}
       - run: |
           changedFiles=($(gh pr view ${{ github.event.pull_request.number }} --json files -q '.files[].path'))
-
           FILTER="*validation.yaml"
-          echo "testtest"
+          
           for f in "${changedFiles[@]}"
           do
               echo "$f"
