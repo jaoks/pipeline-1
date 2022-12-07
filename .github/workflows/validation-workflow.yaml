@@ -7,7 +7,7 @@ on:
       
 jobs:
   validation-workflow:
-    #if: ${{ github.event == 'bogus' }}
+    if: ${{ github.event == 'bogus' }}
     strategy:
       matrix:
         pipeline: [one, two]
