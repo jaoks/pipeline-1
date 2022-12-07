@@ -12,9 +12,9 @@ jobs:
       github.event.pull_request.draft == false && github.event.pull_request.head.repo.full_name == 'joakimstrandberg/pipeline'
     runs-on: ubuntu-latest
     steps:
-      #- uses: actions/checkout@v3
-      #  with:
-      #    ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
       - run: |
           changedFiles=($(gh pr view ${{ github.event.pull_request.number }} --json files -q '.files[].path'))
 
