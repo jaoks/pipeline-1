@@ -53,17 +53,17 @@ jobs:
               repo: context.repo.repo,
               body: '/azp run ${{ steps.pipelinenames.outputs.pipelines }}'
             })
-      - id: debug
-        if: ${{ steps.checkchangedfiles.outputs.pipelineChanged }} == false
-        name: Get required status checks
-        uses: actions/github-script@v6
-        with:
-          github-token: ${{secrets.COMMENTER_TOKEN_2}}
-          script: |
-            const result = await github.rest.repos.getBranch({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              branch: "main"
-            });
-            checks = result.data.protection.required_status_checks.checks
+ #     - id: debug
+ #       if: ${{ steps.checkchangedfiles.outputs.pipelineChanged }} == false
+ ##       name: Get required status checks
+ #       uses: actions/github-script@v6
+ #       with:
+ #         github-token: ${{secrets.COMMENTER_TOKEN_2}}
+ #         script: |
+ #           const result = await github.rest.repos.getBranch({
+ #             owner: context.repo.owner,
+ #             repo: context.repo.repo,
+ #             branch: "main"
+ #           });
+ #           checks = result.data.protection.required_status_checks.checks
             
